@@ -37,13 +37,14 @@ The provided app is a small frontend (e.g. a single-page site or one component) 
 - [ ] No new regressions (rest of app still works).
 - [ ] PR description explains symptom, cause, and fix.
 - [ ] Code changes are minimal and readable.
+- [ ] CI passes: `npm run test` in the app must pass (tests assert correct behavior).
 
 ---
 
 ## Intended bugs (for maintainers only — do not expose to learners)
 
 1. **Wrong data (Orders card):** The "Orders" stat card displays `stats.revenue` instead of `stats.ordersCount`, so it shows 12450 instead of 89.
-2. **Missing null check (table):** One row in `recentOrders` has `customer: null`. The code uses `order.customer.name` with no optional chaining or fallback, so it throws (or shows "undefined") for that row.
+2. **Missing null check (table):** One row in `recentOrders` has `customer: null`. The code uses `order.customer.name` with no optional chaining or fallback, so it throws (or shows "undefined") for that row. Expected fix: display a fallback for null customer (e.g. `"—"` or `"Guest"`) so the table renders without throwing.
 3. **Layout (Orders card):** The Orders card has `className="cardd"` (typo) instead of `className="card"`, so it doesn’t get the same styling (background, padding, shadow) as the other cards.
 
 ---

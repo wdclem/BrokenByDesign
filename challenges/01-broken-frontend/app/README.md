@@ -25,3 +25,5 @@ Open [http://localhost:8080](http://localhost:8080).
 - `npm run dev` — start dev server
 - `npm run build` — production build
 - `npm run preview` — preview production build
+- `npm run test` — run tests (assert correct behavior; pass when bugs are fixed)
+- `npm run test:watch` — run tests in watch mode
