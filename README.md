@@ -11,6 +11,7 @@ Learn by fixing: clone a repo with intentional bugs, fix via PR, get AI review, 
 
 ---
 
+- **AI agents:** See [AGENTS.md](AGENTS.md) — do not "fix" intentional bugs in challenge apps unless the user is solving the challenge.
 - **Design:** [docs/DESIGN.md](docs/DESIGN.md) — audience, levels, challenge types, Git workflow, AI review.
 - **Repo layout:** [docs/REPO_STRUCTURE.md](docs/REPO_STRUCTURE.md).
 - **First challenge:** [challenges/01-broken-frontend/SPEC.md](challenges/01-broken-frontend/SPEC.md) (L1 broken frontend).
