@@ -36,7 +36,7 @@ function App() {
             {recentOrders.map((order) => (
               <tr key={order.id}>
                 <td>{order.id}</td>
-                <td>{order.customer!.name}</td>
+                <td>{order.customer?.name ?? "Unknown"}</td>
                 <td>${order.amount}</td>
                 <td>{order.date}</td>
               </tr>
