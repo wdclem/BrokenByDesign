@@ -9,7 +9,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173). You should see a Sales dashboard with stat cards and a recent-orders table. Something is wrong — find it, fix it, and submit a PR (see the main challenge [SPEC](../SPEC.md)).
+Open [http://localhost:5173](http://localhost:5173). You should see a Sales dashboard with stat cards and a recent-orders table. Something is wrong — find it, fix it, and submit a PR. **Your full ticket and instructions:** [Challenge 01 spec (SPEC.md)](../SPEC.md) (one level up from this folder).
 
 ## Docker (deploy)
 
