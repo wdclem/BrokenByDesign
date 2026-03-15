@@ -1,6 +1,6 @@
 # BrokenByDesign — Design Doc
 
-Learning by **fixing** existing broken or imperfect code instead of building from scratch. Learners clone a repo, fix issues via branch + PR, get AI review, merge, then tackle further challenges in the same repo.
+Learning by **fixing** existing broken or imperfect code instead of building from scratch. Learners fork the repo (main protected), fix issues on a branch, open a PR on their fork, automated tests run, merge on the fork, then tackle further challenges.
 
 ---
 
@@ -40,18 +40,20 @@ Bugs should feel **genuine** (realistic causes and symptoms) rather than obvious
 
 Capture ideas in a backlog; implement in order of level and type (bugs first, then refactors/tests/docs/features).
 
+**Task format:** Write challenge tasks so they resemble real Jira-style tickets (vague description, acceptance criteria, optional wrong hypothesis). This replicates what a junior actually encounters. See [docs/JIRA_STYLE_TASKS.md](JIRA_STYLE_TASKS.md) for template, examples, and tips. Tasks can range from precise ("fix this one field") to very vague ("the page is broken" or no ticket at all). Using the **same app** across several challenges (one codebase, multiple tickets/bugs) also mirrors real junior work.
+
 ---
 
 ## 4. Git workflow and repo structure
 
 **Flow:**
 
-1. Learner clones the challenge repo (one repo per "broken" project, or one monorepo with multiple apps).
-2. Each challenge is described in an **issue** (or linked doc): what’s wrong or what to do.
-3. Learner: `git checkout -b fix/<short-description>`, fix, commit, push, open **PR**.
-4. **AI review** runs on the PR (comment and/or automated checks).
-5. If criteria pass: **merge** (by human or AI, depending on choice below).
-6. Next challenge: new issue → new branch → PR → review → merge.
+1. Learner **forks** the repo (upstream `main` is protected).
+2. Learner clones **their fork**, then works on a branch: `git checkout -b fix/<short-description>`, fix, commit, push.
+3. Learner opens a **PR on their fork** (not against upstream). Each challenge is described in an **issue** or linked doc: what's wrong or what to do.
+4. **Automated tests** run on the fork's PR (e.g. CI on push to the fork).
+5. If criteria pass: merge on the fork (or optional sync back to upstream later).
+6. Next challenge: new issue → new branch → PR on fork → tests → merge.
 
 **Repo structure (per challenge repo):**
 
