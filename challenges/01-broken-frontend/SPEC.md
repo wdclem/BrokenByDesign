@@ -5,47 +5,45 @@
 
 ---
 
-## Objective
+## Ticket (as a junior would see it)
 
-The provided app is a small frontend (e.g. a single-page site or one component) with **one or more intentional bugs**. Your job is to find and fix them, then open a PR with a clear description of what was wrong and how you fixed it.
+**Title:** Internal dashboard — something’s wrong
 
----
+**Type:** Bug · **Priority:** Medium · **Component:** Frontend
 
-## Setup
+**Description**
 
-1. Clone the challenge repo (or use the app in `challenges/01-broken-frontend/app/`).
-2. Install deps and run the app (see repo README).
-3. Observe: something is broken (layout, behavior, or data display).
+Support got reports that the internal dashboard isn’t right — wrong numbers and the orders table has an issue (blank row or error). Need it fixed so it matches the design and doesn’t crash. Design: the three stat cards at the top should look the same and show Revenue, Orders count, and Customers; the recent orders table should show all rows with no errors.
 
----
+*Comment from PM: “Can you also make sure nothing else is broken?”*
 
-## Tasks
+**Steps to reproduce**
 
-1. **Reproduce** — Confirm what’s broken (what you see vs. what you expect). Note steps if needed.
-2. **Debug** — Use devtools, logs, and code reading to find the cause.
-3. **Fix** — Make a minimal fix. Keep code readable.
-4. **Submit** — Open a branch `fix/01-broken-frontend`, commit, push, open a PR. In the PR description:
-   - What was broken (symptom).
-   - Root cause (why it happened).
-   - What you changed and why.
+1. Open the dashboard (run locally, see README in the app folder).
+2. Look at the stats and the table — note what’s wrong.
 
----
+**Acceptance criteria**
 
-## Success criteria (for review)
-
-- [ ] The reported bug is fixed; behavior/layout matches the intended design.
-- [ ] No new regressions (rest of app still works).
-- [ ] PR description explains symptom, cause, and fix.
-- [ ] Code changes are minimal and readable.
-- [ ] CI passes: `npm run test` in the app must pass (tests assert correct behavior).
+- [ ] Dashboard matches design: three stat cards (Revenue, Orders, Customers) with consistent styling; Orders shows the **order count** (e.g. 89), not a revenue figure.
+- [ ] Recent orders table renders all rows; no crash or "undefined" for missing customer data — use a sensible fallback (e.g. "—" or "Guest").
+- [ ] No regressions: existing behaviour preserved.
+- [ ] Open a PR on your fork with a short description of what was broken, root cause, and what you changed. CI must pass (`npm run test`).
 
 ---
 
-## Intended bugs (for maintainers only — do not expose to learners)
+## Your task
 
-1. **Wrong data (Orders card):** The "Orders" stat card displays `stats.revenue` instead of `stats.ordersCount`, so it shows 12450 instead of 89.
-2. **Missing null check (table):** One row in `recentOrders` has `customer: null`. The code uses `order.customer.name` with no optional chaining or fallback, so it throws (or shows "undefined") for that row. Expected fix: display a fallback for null customer (e.g. `"—"` or `"Guest"`) so the table renders without throwing.
-3. **Layout (Orders card):** The Orders card has `className="cardd"` (typo) instead of `className="card"`, so it doesn’t get the same styling (background, padding, shadow) as the other cards.
+You’re the engineer assigned to this ticket. Get the app running, **find what’s wrong** (reproduce, then debug), fix it with minimal changes, and open a PR on your fork. The PR description should explain symptom, cause, and fix — like you would in a real code review.
+
+**Setup:** Fork the repo (main is protected), clone your fork, then go to `challenges/01-broken-frontend/app/`, install deps, and run the app (see the app’s README). Work on a branch, e.g. `fix/01-broken-frontend`.
+
+§**Success =** acceptance criteria met, tests pass, PR description clear. No need to fix anything that isn’t part of this ticket.
+
+---
+
+## Intended bugs (maintainers / AI agents only)
+
+Intentional bugs for this challenge are listed in **[INTENTIONAL_BUGS.md](INTENTIONAL_BUGS.md)**. Do not expose that file to learners.
 
 ---
 
@@ -55,8 +53,9 @@ When implementing the actual broken app, use:
 
 ```
 challenges/01-broken-frontend/
-  SPEC.md       # This file (public)
-  app/          # The broken frontend app (learners clone/fork this or work in repo)
+  SPEC.md             # This file (public)
+  INTENTIONAL_BUGS.md # Intentional bugs list (maintainers/agents only — do not expose to learners)
+  app/                # The broken frontend app (learners clone/fork this or work in repo)
     README.md   # How to install and run
     package.json
     src/

@@ -44,9 +44,9 @@ describe('Dashboard (challenge-01)', () => {
     expect(screen.getByText('Bob')).toBeInTheDocument()
     expect(screen.getByText('Diana')).toBeInTheDocument()
     // The null-customer row (order id 3): cell should have some fallback text
-    const order3Row = rows.find((r) => r.cells[0]?.textContent === '3')
+    const order3Row = rows.find((r) => (r as HTMLTableRowElement).cells[0]?.textContent === '3')
     expect(order3Row).toBeDefined()
-    const customerCell = order3Row?.cells[1]
+    const customerCell = (order3Row as HTMLTableRowElement | undefined)?.cells[1]
     expect(customerCell?.textContent).toBeTruthy()
     expect(customerCell?.textContent).not.toBe('undefined')
   })
