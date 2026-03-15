@@ -19,6 +19,8 @@ So: fork → clone your fork → read the spec above → run the app → fix →
 3. **Run the app:** `cd challenges/01-broken-frontend/app`, then `npm install` and `npm run dev` (see the app's README).
 4. **Fix** the bugs, work on a branch (e.g. `fix/01-broken-frontend`), **open a PR on your fork** with what was broken, root cause, and what you changed. Tests run on the PR; when they pass, merge.
 
+**What's next:** More challenges will follow (same flow: ticket → fix → PR). See [design doc](docs/DESIGN.md) when they're added.
+
 ---
 
 - **AI agents:** See [AGENTS.md](AGENTS.md) — do not "fix" intentional bugs in challenge apps unless the user is solving the challenge.

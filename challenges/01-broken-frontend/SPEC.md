@@ -1,7 +1,8 @@
 # Challenge 01 — Broken frontend (L1)
 
 **Level:** L1 — Broken frontend  
-**Skills:** Reading code, devtools, basic debugging, Git (branch, commit, PR)
+**Skills:** Reading code, devtools, basic debugging, Git (branch, commit, PR)  
+**Practices:** Debugging, Git (branch/PR), clear communication (PR description). [Design goals](../../docs/DESIGN.md#1-audience-and-learning-goals).
 
 ---
 
@@ -37,7 +38,9 @@ You’re the engineer assigned to this ticket. Get the app running, **find what�
 
 **Setup:** Fork the repo (main is protected), clone your fork, then go to `challenges/01-broken-frontend/app/`, install deps, and run the app (see the app’s README). Work on a branch, e.g. `fix/01-broken-frontend`.
 
-§**Success =** acceptance criteria met, tests pass, PR description clear. No need to fix anything that isn’t part of this ticket.
+**Success =** acceptance criteria met, tests pass, PR description clear. No need to fix anything that isn't part of this ticket.
+
+**What's next:** More challenges will follow in this repo (same flow: ticket → fix → PR). See the [README](../../README.md) or [design doc](../../docs/DESIGN.md) when they're added.
 
 ---
 
