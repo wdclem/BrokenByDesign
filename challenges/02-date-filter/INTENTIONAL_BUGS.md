@@ -4,14 +4,12 @@
 
 ---
 
-Draft intentional bugs for this challenge (to be implemented when the app is created):
-
 1. **Off‑by‑one / wrong comparison in date filter**  
-   The filtering logic uses a comparison that excludes start or end dates incorrectly (e.g. `>` instead of `>=`, or `<` instead of `<=`), so orders on the boundary dates are missing or extra.
+   In `filterOrders`, the logic uses **exclusive** bounds: `order.date > startDate` (and the end comparison is wrong; see bug 2). So boundary dates are excluded. Expected: use `>=` and `<=` for inclusive range with correct field.
 
-2. **Wrong field or format used for filtering**  
-   The code compares the selected date range against the wrong field or compares string dates without converting to `Date`, causing orders outside the range to slip through or be filtered out incorrectly.
+2. **Wrong field used for end date comparison**  
+   The filter compares `order.id < endDate` instead of `order.date <= endDate`. So the end-of-range check is wrong. Expected: compare `order.date` to both `startDate` and `endDate`.
 
 3. **Filter reset / “show all” behavior broken**  
-   Clearing the date filter does not restore the full list (e.g. stale filtered array is reused, or state is not reset). Expected: clearing the filter shows all recent orders again.
+   `displayedOrders` is held in state. When the user clicks Clear, `startDate` and `endDate` are reset but `displayedOrders` is never set back to `recentOrders`. Expected: when clearing, set `displayedOrders` to the full list or derive displayed list from filter state.
 

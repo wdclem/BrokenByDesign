@@ -11,9 +11,14 @@ BrokenByDesign/
     REPO_STRUCTURE.md
   challenges/
     01-broken-frontend/
-      SPEC.md             # Challenge spec (objective, tasks, success criteria)
-      INTENTIONAL_BUGS.md # Intentional bugs list (maintainers/agents only — do not expose to learners)
-      app/                # (To implement) The broken frontend app
+      SPEC.md
+      INTENTIONAL_BUGS.md
+      app/                # Implemented (stats + table bugs)
+    02-date-filter/
+      SPEC.md
+      INTENTIONAL_BUGS.md
+      app/                # Implemented (date filter bugs)
+    03-loading-error/ ... 06-top-customers/  # Specs only for now
 ```
 
 **Per challenge repo (when separate):** Clone target for learners. Contains broken app + README + link to challenge spec. See [DESIGN.md](DESIGN.md) §4.
