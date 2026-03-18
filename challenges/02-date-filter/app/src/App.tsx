@@ -7,7 +7,7 @@ function filterOrders(orders: Order[], startDate: string, endDate: string): Orde
   return orders.filter((order) => {
     // Bug 1: exclusive bounds (should be >= and <= for inclusive)
     // Bug 2: compare order.id to endDate instead of order.date
-    return order.date > startDate && order.id < endDate
+    return order.date >= startDate && order.date <= endDate
   })
 }
 
@@ -23,6 +23,7 @@ function App() {
   const handleClear = () => {
     setStartDate('')
     setEndDate('')
+    setDisplayedOrders(recentOrders)
     // Bug 3: never reset displayedOrders to full list
   }
 
