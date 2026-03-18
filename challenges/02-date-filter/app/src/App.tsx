@@ -23,7 +23,7 @@ function App() {
   const handleClear = () => {
     setStartDate('')
     setEndDate('')
-    setDisplayedOrders(filterOrders(recentOrders, startDate, endDate))
+    setDisplayedOrders(recentOrders)
     // Bug 3: never reset displayedOrders to full list
   }
 
