@@ -1,0 +1,27 @@
+name: Challenge 03 - PR tests
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'challenges/03-loading-error/app/**'
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: challenges/03-loading-error/app/package-lock.json
+
+      - name: Install and test
+        run: |
+          cd challenges/03-loading-error/app
+          npm ci
+          npm run build
+          npm run test

@@ -4,24 +4,17 @@
 
 ---
 
-Planned intentional bugs for this challenge (to be implemented when the app is created):
+Implemented intentional bugs for this challenge:
 
 1. **No visible loading state / flicker**  
-   The dashboard either:
-   - Renders empty or stale content while the request is in flight, or  
-   - Briefly shows “Loading…” and then immediately hides it before data has actually arrived (due to incorrect state updates).
+   In `src/App.tsx`, `loadData()` sets `loading` to `true` and then immediately to `false` before awaiting the async request.  
+   Result: users do not get a reliable loading indicator while data is still in flight.
 
 2. **Error state not surfaced**  
-   When the fetch fails:
-   - The error is swallowed (e.g. `catch` just logs to console), or  
-   - The UI stays in a “loading” state forever, or  
-   - The UI shows an empty table with no explanation.
-   Expected: a clear error message and a simple retry action.
+   In `src/App.tsx`, the `catch` block only logs to console and never updates `error` state.  
+   Result: on failed requests, the UI shows no actionable error message.
 
 3. **Retry logic broken or misleading**  
-   The retry button:
-   - Does nothing (handler not wired correctly), or  
-   - Reuses stale data without actually re‑calling the API, or  
-   - Leaves the UI stuck in loading or error.
-   Expected: retry triggers a fresh fetch and updates the UI on success.
+   The Retry button handler only clears `error` (`setError(null)`) and does not call `loadData()` again.  
+   Result: retry does not trigger a fresh fetch.
 
