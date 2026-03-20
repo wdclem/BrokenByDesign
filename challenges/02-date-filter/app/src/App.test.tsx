@@ -13,8 +13,9 @@ describe('Dashboard date filter (challenge-02)', () => {
 
   it('shows all four orders when no filter is applied', () => {
     render(<App />)
-    const rows = screen.getAllByRole('row')
-    expect(rows).toHaveLength(5) // header + 4 data rows
+    const table = screen.getByRole('table')
+    const dataRows = table.querySelectorAll('tbody tr')
+    expect(dataRows).toHaveLength(4) // 4 orders in data
     expect(screen.getByText('Alice')).toBeInTheDocument()
     expect(screen.getByText('Bob')).toBeInTheDocument()
     expect(screen.getByText('Diana')).toBeInTheDocument()
@@ -31,8 +32,9 @@ describe('Dashboard date filter (challenge-02)', () => {
     fireEvent.change(toInput, { target: { value: '2024-01-15' } })
     fireEvent.click(applyBtn)
 
-    const rows = screen.getAllByRole('row')
-    expect(rows).toHaveLength(4) // header + 3 data rows (13th, 14th, 15th)
+    const table = screen.getByRole('table')
+    const dataRows = table.querySelectorAll('tbody tr')
+    expect(dataRows).toHaveLength(3) // 3 orders in range (13th, 14th, 15th)
     expect(screen.getByText('Alice')).toBeInTheDocument()
     expect(screen.getByText('Bob')).toBeInTheDocument()
     expect(screen.getByText('—')).toBeInTheDocument()
@@ -50,13 +52,13 @@ describe('Dashboard date filter (challenge-02)', () => {
     fireEvent.change(toInput, { target: { value: '2024-01-15' } })
     fireEvent.click(applyBtn)
 
-    let rows = screen.getAllByRole('row')
-    expect(rows).toHaveLength(4)
+    let table = screen.getByRole('table')
+    expect(table.querySelectorAll('tbody tr')).toHaveLength(3)
 
     fireEvent.click(clearBtn)
 
-    rows = screen.getAllByRole('row')
-    expect(rows).toHaveLength(5)
+    table = screen.getByRole('table')
+    expect(table.querySelectorAll('tbody tr')).toHaveLength(4) // all 4 orders restored
     expect(screen.getByText('Diana')).toBeInTheDocument()
   })
 
