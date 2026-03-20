@@ -4,23 +4,21 @@
 
 ---
 
-Planned intentional bugs for this challenge (to be implemented when the app is created):
+Implemented intentional bugs for this challenge:
 
 1. **String vs numeric sort for Amount**  
-   Amounts are stored as numbers but sorted using string comparison (or vice‑versa), leading to incorrect order (e.g. `100` coming before `9`).
+   In `src/App.tsx`, Amount sorting compares `String(a.amount)` vs `String(b.amount)` using `localeCompare` instead of numeric comparison.  
+   Result: numeric order can be wrong.
 
-2. **Lexicographic date sort or wrong field**  
-   Dates are compared as raw strings in a format where lexicographic order doesn’t match chronological order, or the wrong field is used for sorting. Result: Date sort looks random to users.
+2. **Wrong field used for Date sort**  
+   In `src/App.tsx`, the Date sort branch compares `a.id` and `b.id` instead of date values.  
+   Result: clicking Date does not sort chronologically.
 
 3. **In‑place mutation of the data array**  
-   The code calls `array.sort(...)` directly on the original data source, causing:
-   - Permanent changes to the base order, or  
-   - Other parts of the UI to break or behave oddly.
-   Expected: derive a sorted copy instead of mutating the source.
+   In `src/App.tsx`, `recentOrders.sort(...)` is called directly (no copied array).  
+   Result: original data order is mutated in place.
 
 4. **Sort direction toggle logic broken**  
-   Clicking the same column header multiple times:
-   - Does not toggle direction consistently, or  
-   - Resets to an unexpected state.
-   Expected: a simple, predictable toggle (e.g. unsorted → ascending → descending → ascending…).
+   In `src/App.tsx`, clicking the same column always sets direction to `'asc'` instead of toggling.  
+   Result: repeated clicks do not switch between ascending and descending.
 
